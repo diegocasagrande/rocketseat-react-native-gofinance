@@ -9,6 +9,7 @@ import theme from './src/global/styles/theme';
 import { Dashboard } from './src/screen/Dashboard';
 import { Register } from './src/screen/Register';
 import { CategorySelect } from './src/screen/CategorySelect';
+import { SignIn } from './src/screen/SignIn';
 
 import { 
   useFonts, 
@@ -20,6 +21,7 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { AppRoutes } from './src/routes/app.routes';
 import { StatusBar } from 'expo-status-bar';
+import { AuthProvider } from './src/hooks/auth';
 
 export default function App() {
 
@@ -38,7 +40,9 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <NavigationContainer>
         <StatusBar style="light" />
-        <AppRoutes></AppRoutes>
+        <AuthProvider>
+          <SignIn />
+        </AuthProvider>
       </NavigationContainer>
     </ThemeProvider>
   );
